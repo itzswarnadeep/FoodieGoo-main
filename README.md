@@ -67,6 +67,8 @@ A full-stack food delivery application built with the MERN stack (MongoDB, Expre
 - Observability: simple polling is used for admin updates; consider WebSockets or Server-Sent Events for real-time updates in the future.
 
 ### System Architecture WorkFlow
+
+```
 ┌─────────────────────────────────────────────────────────────────────┐
 │                        PRESENTATION LAYER                            │
 │                     (Client-Side Applications)                       │
@@ -84,7 +86,7 @@ A full-stack food delivery application built with the MERN stack (MongoDB, Expre
 │  │ • Order Tracking       │  │  │ • Auto-refresh (10s)        │   │
 │  └────────────────────────┘  │  └─────────────────────────────┘   │
 │   Deployed on Netlify        │   Deployed on Netlify               │
-│           │                              │
+│   Port 5173 (local)           │   Port 5174 (local)                 │
 └──────────────────────────────┴──────────────────────────────────────┘
                                  │
                     HTTP/HTTPS Requests (REST API)
@@ -145,7 +147,7 @@ A full-stack food delivery application built with the MERN stack (MongoDB, Expre
 │  │                                                               │   │
 │  └─────────────────────────────────────────────────────────────┘   │
 │   Hosted on MongoDB Atlas (Cloud)                                   │
-│                               │
+│   Automated backups | Replica sets for high availability            │
 └─────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────┐
@@ -156,6 +158,89 @@ A full-stack food delivery application built with the MERN stack (MongoDB, Expre
 │  • Secure payment tokenization                                       │
 │  • Webhook notifications for payment confirmation                    │
 └─────────────────────────────────────────────────────────────────────┘
+```
+
+#### Detailed Architecture Layers Breakdown
+
+**PRESENTATION LAYER (Client-Side)**
+- **Customer Frontend (React + Vite)**
+  - Port: 5173 (local), deployed on Netlify
+  - Features: Menu browsing, shopping cart, user authentication, order placement, payment processing, order tracking
+  - Technology: React.js with Vite bundler, responsive CSS3, Axios for API calls
+
+- **Admin Panel (React + Vite)**
+  - Port: 5174 (local), deployed on Netlify
+  - Features: Order management, food CRUD operations, real-time notifications, status updates, analytics dashboard, auto-refresh every 10 seconds
+  - Technology: React.js with Vite, React Router for navigation, polling mechanism for live updates
+
+**APPLICATION LAYER (Backend Business Logic)**
+- **Node.js + Express.js API Server**
+  - Port: 4000 (local), deployed on Render with HTTPS in production
+  
+  - **Auth Module**
+    - JWT token generation and validation
+    - bcrypt password hashing for security
+    - User session management
+    
+  - **Payment Module**
+    - Stripe API integration
+    - PaymentIntent creation and verification
+    - Payment webhook handling
+    - Failed payment management
+    
+  - **File Upload Module**
+    - Multer middleware for multipart form data
+    - Image validation and processing
+    - Static file serving
+    - Food item image management
+  
+  - **API Endpoint Groups**
+    - `/api/user/*` - User registration, login, profile management
+    - `/api/food/*` - Food items list, add, edit, delete operations
+    - `/api/order/*` - Order creation, payment verification, status updates, order history
+    - `/api/cart/*` - Add to cart, remove items, get cart contents
+
+**DATA LAYER (Persistence & Storage)**
+- **MongoDB Database (NoSQL)**
+  - Hosted on MongoDB Atlas (Cloud)
+  - Connection via Mongoose ODM
+  - Automated daily backups and replication sets for high availability
+  
+  - **Users Collection**
+    - User ID, name, email
+    - Encrypted password (bcrypt hash)
+    - Shopping cart data (items and quantities)
+    - Delivery addresses
+  
+  - **Foods Collection**
+    - Food item ID, name, description
+    - Price and category
+    - Image URL/path
+    - Availability status
+  
+  - **Orders Collection**
+    - Order ID and user ID reference
+    - Items array with quantities and prices
+    - Total order amount
+    - Delivery address details
+    - Order status (Food Processing → Out for Delivery → Delivered)
+    - Payment confirmation and transaction details
+
+**EXTERNAL SERVICES**
+- **Stripe Payment Gateway**
+  - PCI-DSS Level 1 compliant
+  - Checkout session creation
+  - Secure payment tokenization (no direct card storage)
+  - Webhook notifications for asynchronous payment confirmation
+  - Support for multiple payment methods (cards, test mode)
+
+#### Data Flow & Communication
+
+1. **User Request Flow**: Client → HTTP/HTTPS → API Server → Mongoose → MongoDB
+2. **API Response Flow**: MongoDB → Mongoose → API Server → HTTP/HTTPS Response → Client
+3. **Payment Flow**: Client → Stripe Session Creation → Payment Gateway → Webhook Confirmation → Order Finalization
+4. **Admin Polling**: Admin Panel → API `/api/order/list` (every 10s) → Fresh order data
+5. **File Upload**: Admin uploads image → Multer processes → Stored in `/backend/uploads/` or cloud storage → Image URL saved in MongoDB
 
 ##  Screenshots
 
