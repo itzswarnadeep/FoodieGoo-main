@@ -160,6 +160,9 @@ A full-stack food delivery application built with the MERN stack (MongoDB, Expre
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
+![System Architecture - Food Ordering App Flow](System_Architecture/Food%20Ordering%20App%20Flow.png)
+
+
 #### Detailed Architecture Layers Breakdown
 
 **PRESENTATION LAYER (Client-Side)**
