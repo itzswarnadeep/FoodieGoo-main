@@ -1,0 +1,138 @@
+.explore-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin: 50px 0;
+    padding: 0 20px;
+}
+
+.explore-menu h1 {
+    color: #262626;
+    font-weight: 600;
+    font-size: max(2.5vw, 28px);
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.explore-menu-text {
+    max-width: 70%;
+    color: #666;
+    font-size: max(1.1vw, 16px);
+    line-height: 1.6;
+    text-align: center;
+    margin: 0 auto 20px auto;
+}
+
+.explore-menu-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    text-align: center;
+    margin: 30px 0;
+    overflow-x: auto;
+    padding: 30px 20px;
+    flex-wrap: wrap;
+}
+
+.explore-menu-list::-webkit-scrollbar {
+    display: none;
+}
+
+.explore-menu-list-item {
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 100px;
+    padding: 15px;
+    border-radius: 15px;
+    background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.explore-menu-list-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.explore-menu-list-item img {
+    width: 7.5vw;
+    min-width: 80px;
+    height: 80px;
+    cursor: pointer;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    object-fit: cover;
+    border: 3px solid transparent;
+}
+
+.explore-menu-list-item p {
+    margin-top: 15px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.explore-menu-list-item img.active {
+    border: 3px solid #ff6347;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(255, 99, 71, 0.3);
+}
+
+.explore-menu-list-item:hover p {
+    color: #ff6347;
+}
+
+.explore-menu hr {
+    margin: 30px 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e2e2e2, transparent);
+    border: none;
+}
+
+@media (max-width: 1050px) {
+    .explore-menu-text {
+        max-width: 100%;
+        font-size: max(1.2vw, 12px);
+    }
+    
+    .explore-menu-list {
+        gap: 20px;
+    }
+    
+    .explore-menu-list-item img {
+        width: 6vw;
+        min-width: 70px;
+    }
+    
+    .explore-menu-list-item p {
+        font-size: max(1.8vw, 14px);
+    }
+}
+
+@media (max-width: 750px) {
+    .explore-menu h1 {
+        font-size: max(4vw, 20px);
+    }
+    
+    .explore-menu-text {
+        font-size: max(2vw, 12px);
+    }
+    
+    .explore-menu-list {
+        gap: 15px;
+    }
+    
+    .explore-menu-list-item img {
+        width: 20vw;
+        min-width: 60px;
+    }
+    
+    .explore-menu-list-item p {
+        font-size: max(3vw, 12px);
+    }
+}

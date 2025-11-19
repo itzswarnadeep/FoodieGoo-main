@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+*{
+  padding : 0;
+  margin : 0;
+  box-sizing : border-box;
+  font-family: 'Outfit', sans-serif;
+}
+
+body{
+  min-height: 100vh;
+  background-color: #f5f5f5;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+hr{
+  border: none;
+  height: 1px;
+  background-color: #a9a9a9;
+}
+
+.app-content {
+  display: flex;
+}
+
+.main-content {
+  flex: 1;
+  background-color: #f9f9fb;
+}
+
+/* Form Styles */
+.add-form {
+  width: 70%;
+  margin-left: 5vw;
+  margin-top: 50px;
+  color: #6d6d6d;
+  font-size: 16px;
+}
+
+.add-form .add-img-upload {
+  margin-bottom: 20px;
+}
+
+.add-form .add-img-upload img {
+  width: 120px;
+}
+
+.add-form .add-product-name, .add-form .add-product-description {
+  margin-bottom: 20px;
+}
+
+.add-form .add-product-name input, .add-form .add-product-description textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #c9c9c9;
+  border-radius: 6px;
+}
+
+.add-form .add-category-price {
+  display: flex;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.add-form .add-category-price select, .add-form .add-category-price input {
+  padding: 10px;
+  border: 1px solid #c9c9c9;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.add-btn {
+  padding: 10px 30px;
+  border: none;
+  color: white;
+  background-color: #000;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* List Styles */
+.list {
+  margin: 50px;
+}
+
+.list-table {
+  width: 100%;
+  margin-top: 30px;
+  border-collapse: collapse;
+}
+
+.list-table-format {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 1fr 1fr 0.5fr;
+  gap: 10px;
+  padding: 12px 15px;
+  border: 1px solid #cacaca;
+  text-align: left;
+  align-items: center;
+}
+
+.list-table-format.title {
+  background-color: #f9f9f9;
+  font-weight: 600;
+}
+
+.list-table img {
+  width: 50px;
+}
+
+.list-table .cross {
+  cursor: pointer;
+}
+
+/* Orders Styles */
+.order {
+  margin: 50px;
+}
+
+.order-list {
+  list-style: none;
+}
+
+.order-item {
+  display: grid;
+  grid-template-columns: 0.5fr 2fr 1fr 1fr 1fr;
+  gap: 30px;
+  border: 1px solid tomato;
+  padding: 20px;
+  margin: 30px 0;
+  font-size: 14px;
+  color: #505050;
+}
+
+.order-item-food {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.order-item img {
+  width: 50px;
+}
+
+.order-item select {
+  background-color: #ffe8e4;
+  border: 1px solid tomato;
+  outline: none;
+  padding: 10px;
+}
