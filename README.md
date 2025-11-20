@@ -29,8 +29,6 @@ A full-stack food delivery application built with the MERN stack (MongoDB, Expre
   -  Credit/Debit Card (Stripe integration)
   -  UPI Payment (Coming soon)
   -  Cash on Delivery (COD)
-- **Order Tracking** - Real-time order status updates
-- **Location Services** - Get current location for delivery
 - **Order History** - View past orders and their status
 
 ###  Admin Panel
