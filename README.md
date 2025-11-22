@@ -154,11 +154,13 @@ A full-stack food delivery application built with the MERN stack (MongoDB, Expre
 │  Stripe Payment Gateway - PCI-compliant payment processing          │
 │  • Checkout session creation                                         │
 │  • Secure payment tokenization                                       │
-│  • Webhook notifications for payment confirmation                    │
+│  Webhook notifications for payment confirmation                    │
 └─────────────────────────────────────────────────────────────────────┘
 ```
 
-![System Architecture - Food Ordering App Flow](System_Architecture/Food%20Ordering%20App%20Flow.png)
+![System Architecture Flow](System_Architecture/system_Flow.png)
+
+![System Architecture - Food Ordering App Flow](System_Architecture/Food%20Ordering%20App_Flow.png)
 
 
 #### Detailed Architecture Layers Breakdown
