@@ -65,6 +65,8 @@ A full-stack food delivery application built with the MERN stack (MongoDB, Expre
 - Observability: simple polling is used for admin updates; consider WebSockets or Server-Sent Events for real-time updates in the future.
 
 ### System Architecture WorkFlow
+
+
 ![System Architecture Flow](System_Architecture/system_Flow.png)
 
 ![System Architecture - Food Ordering App Flow](System_Architecture/Food%20Ordering%20App_Flow.png)
